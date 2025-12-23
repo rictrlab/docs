@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rictr | documentation</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <nav class="sidebar-nav">
+                    <ul class="nav-main">
+                        <li class="nav-section">
+                            <a href="#getting-started" class="nav-section-title">Getting Started</a>
+                            <ul class="nav-subsections">
+                                <li><a href="#overview">Overview</a></li>
+                                <li><a href="#installation">Installation</a></li>
+                                <li><a href="#quick-start">Quick Start</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-section">
+                            <a href="#core" class="nav-section-title">Core</a>
+                            <ul class="nav-subsections">
+                                <li><a href="#distiller">Distiller</a></li>
+                                <li><a href="#trainer">Trainer</a></li>
+                                <li><a href="#model-requirements">Model Requirements</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-section">
+                            <a href="#strategies" class="nav-section-title">Strategies</a>
+                            <ul class="nav-subsections">
+                                <li><a href="#soft-target">Soft Target</a></li>
+                                <li><a href="#hidden-state">Hidden State</a></li>
+                                <li><a href="#composite">Composite</a></li>
+                                <li><a href="#custom-strategies">Custom Strategies</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-section">
+                            <a href="#alignment" class="nav-section-title">Alignment</a>
+                            <ul class="nav-subsections">
+                                <li><a href="#layer-map">Layer Mapping</a></li>
+                                <li><a href="#projectors">Projectors</a></li>
+                                <li><a href="#feature-extractor">Feature Extractor</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-section">
+                            <a href="#api" class="nav-section-title">API Reference</a>
+                            <ul class="nav-subsections">
+                                <li><a href="#losses">Loss Functions</a></li>
+                                <li><a href="#metrics">Metrics</a></li>
+                                <li><a href="#utils">Utilities</a></li>
+                                <li><a href="#integrations">Integrations</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-section">
+                            <a href="#examples" class="nav-section-title">Examples</a>
+                            <ul class="nav-subsections">
+                                <li><a href="#mlp-example">MLP Distillation</a></li>
+                                <li><a href="#cnn-example">CNN Distillation</a></li>
+                                <li><a href="#transformer-example">Transformer Distillation</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-section">
+                            <a href="#design" class="nav-section-title">Design</a>
+                            <ul class="nav-subsections">
+                                <li><a href="#architecture">Architecture</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <nav class="top-nav">
+                <div class="logo-header">
+                    <div class="logo-version">
+                        <img src="../assets/logo.png" alt="rictr" class="main-logo">
+                        <div class="version-dropdown">
+                            <button class="version-btn">
+                                Latest (1.0.0)
+                                <svg class="dropdown-arrow" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </button>
+                            <ul class="version-menu">
+                                <li><a href="../latest/" class="active">Latest (0.1.0)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://github.com/prashantpandeygit/rictr" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="View on GitHub">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+            <div class="content-wrapper">
+                <!-- OVERVIEW -->
+                <section id="overview">
+                    <p class="lead">A Knowledge Distillation library for PyTorch.</p>
+                    <p>compress large models into smaller ones by transferring learned representations.</p>
+
+                    <h3>Key Features</h3>
+                    <ul class="feature-list">
+                        <li><strong>Minimal API</strong> : small surface area, easy to learn</li>
+                        <li><strong>Strategy</strong> : change distillation methods without changing much code</li>
+                        <li><strong>PyTorch</strong> : works with any <code>nn.Module</code></li>
+                        <li><strong>Composable</strong> : combine multiple strategies with weighted sums into a custom one</li>
+                        <li><strong>HuggingFace & Accelerate</strong> : third party integrations</li>
+                    </ul>
+                </section>
+
+                <!-- INSTALLATION -->
+                <section id="installation">
+                    <h2>Installation</h2>
+                    <p>Requires <strong>Python 3.13+</strong> and <strong>PyTorch 2.0+</strong>.</p>
+                    <pre><code class="language-python"># using uv (recommended)
+uv add rictr
+
+# using pip
+pip install rictr
+
+# using huggingface support
+pip install rictr[hf]
+
+# using accelerate support
+pip install rictr[accelerate]</code></pre>
+                </section>
+
+                <!-- QUICK START -->
+                <section id="quick-start">
+                    <h2>Quick Start</h2>
+                    <p>Distill teacher into a student in a few lines as such:</p>
+                    <pre><code class="language-python">import torch
+from rictr import Distiller, SoftTarget
+
+# your models (must accept **kwargs in forward)
+teacher = LargeModel()
+student = SmallModel()
+
+# strategy defines what to distill
+strategy = SoftTarget(temperature=4.0)
+
+# use standard pytorch optimizer as per need
+optimizer = torch.optim.Adam(student.parameters(), lr=1e-3)
+
+# create distiller
+distiller = Distiller(
+    teacher=teacher,
+    student=student,
+    strategy=strategy,
+    optimizer=optimizer,
+)
+
+# training loop
+for batch in dataloader:
+    loss = distiller.distill_step(batch=batch)
+    print(f"Loss: {loss.item():.4f}")</code></pre>
+                </section>
+
+                <!-- DISTILLER -->
+                <section id="distiller">
+                    <h2>Distiller</h2>
+                    <p>The <code>Distiller</code> runs the distillation loop: freezes teacher, runs forward passes, computes loss, updates student.</p>
+
+                    <pre><code class="language-python">from rictr import Distiller
+
+distiller = Distiller(
+    teacher=teacher,          # frozen automatically
+    student=student,          # trainable model
+    strategy=strategy,        # on how to compute loss
+    optimizer=optimizer,      # updates the student
+    device=torch.device("cuda"),  # optional, defaults to cpu when not specified
+)</code></pre>
+
+                    <h3>What Distiller Does</h3>
+                    <ul class="feature-list">
+                        <li>freezes teacher parameters (<code>requires_grad=False</code>)</li>
+                        <li>sets teacher to eval mode</li>
+                        <li>moves batch tensors to device automatically</li>
+                        <li>runs forward passes with/without gradients</li>
+                        <li>calls strategy to compute loss</li>
+                        <li>runs backward pass and optimizer step</li>
+                        <li>moves models to specified device</li>
+                    </ul>
+
+                    <h3>What Distiller Does NOT Do</h3>
+                    <ul class="feature-list">
+                        <li>does not support training loops for now, you can use <code>Trainer</code> or define your own</li>
+                        <li>data or batch loading</li>
+                        <li>logging</li>
+                        <li>learning rate scheduling</li>
+                    </ul>
+                </section>
+
+                <!-- TRAINER -->
+                <section id="trainer">
+                    <h2>Trainer</h2>
+                    <p>For multiple epoch training with callbacks, use the <code>Trainer</code> class.</p>
+                    <pre><code class="language-python">from rictr import Trainer
+
+def log_callback(state, output):
+    if state.step % 100 == 0:
+        print(f"Step {state.step}: loss={output.loss:.4f}")
+
+trainer = Trainer(distiller, callbacks=[log_callback])
+epoch_losses = trainer.train(dataloader, epochs=10)</code></pre>
+
+                    <h3>Training State</h3>
+                    <p>Tracks progress and is passed to callbacks.</p>
+                    <pre><code class="language-python">from rictr import TrainingState
+
+# available attributes:
+state.step       # current step number (int)
+state.epoch      # current epoch number (int)
+state.best_loss  # best loss seen so far (float)
+state.history    # list of StepOutput objects</code></pre>
+
+                    <h3>Step Output</h3>
+                    <p>Returned from each training step.</p>
+                    <pre><code class="language-python">from rictr import StepOutput
+
+output.loss    # loss value (float)
+output.step    # step number (int)
+output.extras  # optional dict for custom data</code></pre>
+
+                    <h3>Callbacks</h3>
+                    <p>Callbacks are functions that receive <code>(state, output)</code>.</p>
+                    <pre><code class="language-python">def checkpoint_callback(state, output):
+    if state.step % 1000 == 0:
+        torch.save(student.state_dict(), f"ckpt_{state.step}.pt")
+
+def early_stop_callback(state, output):
+    if output.loss < 0.01:
+        raise StopIteration("Target reached")
+
+trainer = Trainer(distiller, callbacks=[
+    log_callback,
+    checkpoint_callback,
+])</code></pre>
+                </section>
+
+                <!-- MODEL REQUIREMENTS -->
+                <section id="model-requirements">
+                    <h2>Model Requirements</h2>
+                    <p>Models must meet two requirements to work with rictr.</p>
+
+                    <h3>1. Accept **kwargs in forward()</h3>
+                    <p>the distiller passes batch dicts as <code>**kwargs</code>. your model's <code>forward()</code> must accept extra arguments.</p>
+                    <pre><code class="language-python">class MyModel(nn.Module):
+    def forward(self, x, **kwargs):  # accept **kwargs
+        return self.layers(x)
+
+# or explicitly handle expected keys
+class MyModel(nn.Module):
+    def forward(self, input_ids, attention_mask=None, **kwargs):
+        return self.transformer(input_ids, attention_mask)</code></pre>
+
+                    <h3>2. Return Dict or Tensor</h3>
+                    <p>Model outputs are normalized to dicts. Supported formats:</p>
+                    <pre><code class="language-python"># dict (recommended)
+return {"logits": logits, "hidden_states": hidden}
+
+# single tensor -> becomes {"logits": tensor}
+return logits
+
+# tuple/list -> first element becomes {"logits": outputs[0]}
+return (logits, hidden_states)
+
+# named tuple -> converted via _asdict()
+return ModelOutput(logits=logits, hidden=hidden)</code></pre>
+
+                    <h3>Batch Format</h3>
+                    <p>Batches must be dicts with tensor values. The <code>labels</code> key is used by <code>SoftTarget</code> when <code>alpha</code> is set.</p>
+                    <pre><code class="language-python"># example collate function
+def collate_fn(batch):
+    xs, ys = zip(*batch)
+    return {
+        "x": torch.stack(xs),
+        "labels": torch.stack(ys),  # required if using alpha
+    }</code></pre>
+                </section>
+
+                <!-- SOFT TARGET -->
+                <section id="soft-target">
+                    <h2>Soft Target Strategy</h2>
+                    <p>Logit-based distillation from <strong>Hinton et al. (2015)</strong>, matches softened probability distributions using temperature scaled KL divergence loss.</p>
+
+                    <h3>Pure Distillation</h3>
+                    <pre><code class="language-python">from rictr import SoftTarget
+
+strategy = SoftTarget(temperature=4.0)</code></pre>
+
+                    <h3>With Task Loss Blending</h3>
+                    <pre><code class="language-python"># loss = alpha * task_loss + (1 - alpha) * distill_loss
+strategy = SoftTarget(
+    temperature=4.0,
+    alpha=0.5,  # requires "labels" in batch
+)</code></pre>
+
+                    <h3>Parameters</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>temperature</code></td><td>float</td><td>softmax temperature (must be > 0), higher = softer. typical: 2-20</td></tr>
+                            <tr><td><code>alpha</code></td><td>float | None</td><td>task loss weight in [0, 1]. None = pure distillation</td></tr>
+                            <tr><td><code>task_loss</code></td><td>callable</td><td>loss function for labels. default: <code>F.cross_entropy</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Temperature Guide</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Temperature</th><th>Effect</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>T = 1</td><td>original (hard) distribution</td></tr>
+                            <tr><td>T = 2-5</td><td>moderate softening (good default)</td></tr>
+                            <tr><td>T = 10-20</td><td>very soft, reveals class relationships</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- HIDDEN STATE -->
+                <section id="hidden-state">
+                    <h2>Hidden State Distillation</h2>
+                    <p>Feature based distillation from <strong>FitNets (Romero et al., 2014)</strong>, matches intermediate layer activations between teacher and student.</p>
+
+                    <pre><code class="language-python">from rictr import HiddenStateDistillation, LayerMap, make_projector
+
+# define layer pairs: (teacher_layer, student_layer)
+layer_map = LayerMap(
+    pairs=[
+        ("encoder.layer4", "encoder.layer2"),
+    ],
+    projectors={
+        # project student dim (256) to teacher dim (512)
+        "encoder.layer2": make_projector(256, 512),
+    },
+)
+
+strategy = HiddenStateDistillation(
+    teacher=teacher,
+    student=student,
+    layer_map=layer_map,
+    loss_fn=F.mse_loss,  # default
+)
+
+# IMPORTANT: clean up hooks when done!
+strategy.remove_hooks()</code></pre>
+
+                    <h3>Parameters</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>teacher</code></td><td>nn.Module</td><td>teacher model</td></tr>
+                            <tr><td><code>student</code></td><td>nn.Module</td><td>student model</td></tr>
+                            <tr><td><code>layer_map</code></td><td>LayerMap</td><td>defines layer pairs and projectors</td></tr>
+                            <tr><td><code>loss_fn</code></td><td>callable</td><td>loss for comparing features. default: <code>F.mse_loss</code></td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- COMPOSITE -->
+                <section id="composite">
+                    <h2>Composite Strategy</h2>
+                    <p>Combines multiple strategies with weighted sum.</p>
+                    <pre><code class="language-python">from rictr import Composite, SoftTarget, HiddenStateDistillation
+
+soft = SoftTarget(temperature=4.0)
+hidden = HiddenStateDistillation(...)
+
+# loss = 0.7 * soft_loss + 0.3 * hidden_loss
+strategy = Composite([
+    (soft, 0.7),
+    (hidden, 0.3),
+])</code></pre>
+                </section>
+
+                <!-- CUSTOM STRATEGIES -->
+                <section id="custom-strategies">
+                    <h2>Custom Strategies</h2>
+                    <p>Implement the <code>DistillationStrategy</code> protocol.</p>
+                    <pre><code class="language-python">from rictr import DistillationStrategy
+import torch
+
+class MyStrategy:
+    
+    def __call__(
+        self,
+        *,
+        student_outputs: dict[str, torch.Tensor],
+        teacher_outputs: dict[str, torch.Tensor],
+        targets: dict[str, torch.Tensor] | None = None,
+    ) -> torch.Tensor:
+        student_logits = student_outputs["logits"]
+        teacher_logits = teacher_outputs["logits"]
+        
+        # your custom loss computation
+        loss = your_loss_function(student_logits, teacher_logits)
+        
+        return loss  # must be scalar tensor</code></pre>
+                </section>
+
+                <!-- LAYER MAP -->
+                <section id="layer-map">
+                    <h2>Layer Mapping</h2>
+                    <p><code>LayerMap</code> defines correspondences between teacher and student layers.</p>
+
+                    <pre><code class="language-python">from rictr import LayerMap
+
+layer_map = LayerMap(
+    pairs=[
+        ("teacher.layer4", "student.layer2"),  # (teacher, student)
+        ("teacher.layer8", "student.layer4"),
+    ],
+)
+
+# access layer lists
+layer_map.teacher_layers  # ["teacher.layer4", "teacher.layer8"]
+layer_map.student_layers  # ["student.layer2", "student.layer4"]
+len(layer_map)            # 2</code></pre>
+
+                    <h3>With Projectors</h3>
+                    <p>When dimensions don't match, add projectors keyed by <strong>student layer name</strong>.</p>
+                    <pre><code class="language-python">layer_map = LayerMap(
+    pairs=[("teacher.fc", "student.fc")],
+    projectors={
+        "student.fc": make_projector(256, 512),  # 256 -> 512
+    },
+)</code></pre>
+                </section>
+
+                <!-- PROJECTORS -->
+                <section id="projectors">
+                    <h2>Projectors</h2>
+                    <p>Transform student features to match teacher dimensions.</p>
+                    <pre><code class="language-python">from rictr import make_projector
+from rictr.alignment import LinearProjector, MLPProjector
+
+# linear projection (default)
+proj = make_projector(in_features=256, out_features=512)
+
+# MLP with hidden layer
+proj = make_projector(
+    in_features=256,
+    out_features=512,
+    hidden=384,  # adds relu hidden layer
+)</code></pre>
+
+                    <h3>Include in Optimizer</h3>
+                    <p>Projectors have learnable parameters.</p>
+                    <pre><code class="language-python">optimizer = torch.optim.Adam(
+    list(student.parameters()) + list(proj.parameters()),
+    lr=1e-3,
+)</code></pre>
+
+                    <h3>CNN Projectors</h3>
+                    <p>For convolutional features, use 1x1 convolutions.</p>
+                    <pre><code class="language-python">proj = nn.Conv2d(
+    in_channels=32,   # student channels
+    out_channels=128, # teacher channels
+    kernel_size=1,
+)</code></pre>
+                </section>
+
+                <!-- FEATURE EXTRACTOR -->
+                <section id="feature-extractor">
+                    <h2>Feature Extractor</h2>
+                    <p>Captures intermediate activations using forward hooks.</p>
+                    <pre><code class="language-python">from rictr import FeatureExtractor
+
+extractor = FeatureExtractor(
+    model=model,
+    layer_names=["encoder.layer2", "encoder.layer4"],
+    transform=None,  # optional transform for captured features
+)
+
+# forward pass populates features
+output = model(input)
+
+# access captured features
+features = extractor.features  # {"encoder.layer2": tensor, ...}
+
+# clear for next batch
+extractor.clear()
+
+# IMPORTANT: remove hooks when done
+extractor.remove_hooks()</code></pre>
+
+                    <h3>Layer Naming</h3>
+                    <p>Use dot notation to specify nested modules.</p>
+                    <pre><code class="language-python"># find layer names
+for name, module in model.named_modules():
+    print(name, type(module).__name__)
+
+# examples
+layer_names = [
+    "encoder",                      # direct child
+    "encoder.layers.0",             # indexed
+    "encoder.layers.0.attention",   # deeply nested
+]</code></pre>
+                </section>
+
+                <!-- LOSSES -->
+                <section id="losses">
+                    <h2>Loss Functions</h2>
+                    <p>Reusable loss primitives in <code>rictr.losses</code>.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Function</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>kl_divergence</code></td><td>temperature scaled KL divergence</td></tr>
+                            <tr><td><code>mse_loss</code></td><td>mean squared error with optional L2 normalization</td></tr>
+                            <tr><td><code>cosine_loss</code></td><td>1 - cosine similarity</td></tr>
+                            <tr><td><code>smooth_l1_loss</code></td><td>huber loss (less sensitive to outliers)</td></tr>
+                            <tr><td><code>attention_loss</code></td><td>attention transfer loss</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Usage</h3>
+                    <pre><code class="language-python">from rictr import kl_divergence, mse_loss, cosine_loss, attention_loss
+from rictr.losses import smooth_l1_loss, compute_attention_map
+
+# kl divergence with temperature
+loss = kl_divergence(student_logits, teacher_logits, temperature=4.0)
+
+# mean squared error with optional normalization
+loss = mse_loss(student_feat, teacher_feat, normalize=True)
+
+# cosine similarity loss
+loss = cosine_loss(student_feat, teacher_feat)
+
+# smooth l1 (huber)
+loss = smooth_l1_loss(student_feat, teacher_feat, beta=1.0)
+
+# attention transfer
+s_attn = compute_attention_map(student_features)  # [B,C,H,W] -> [B,H,W]
+t_attn = compute_attention_map(teacher_features)
+loss = attention_loss(s_attn, t_attn, normalize=True)</code></pre>
+                </section>
+
+                <!-- METRICS -->
+                <section id="metrics">
+                    <h2>Metrics</h2>
+                    <p>Evaluation helpers in <code>rictr.metrics</code>.</p>
+
+                    <pre><code class="language-python">from rictr.metrics import LossTracker, accuracy, top_k_accuracy, perplexity
+
+# track loss during training
+tracker = LossTracker()
+for batch in dataloader:
+    loss = distiller.distill_step(batch=batch)
+    tracker.update(loss)
+
+print(f"Mean: {tracker.mean():.4f}")
+print(f"Min:  {tracker.min():.4f}")
+print(f"Last: {tracker.last():.4f}")
+tracker.reset()  # clear tracked values
+
+# classification metrics
+acc = accuracy(logits, labels)           # top-1
+acc5 = top_k_accuracy(logits, labels, k=5)  # top-5
+
+# language modeling
+ppl = perplexity(logits, labels, ignore_index=-100)</code></pre>
+                </section>
+
+                <!-- UTILS -->
+                <section id="utils">
+                    <h2>Utilities</h2>
+                    <p>Helper functions for common operations.</p>
+
+                    <h3>Freezing Models</h3>
+                    <pre><code class="language-python">from rictr import freeze, unfreeze
+from rictr.utils import freeze_except
+
+freeze(teacher)  # all params: requires_grad=False
+unfreeze(model)  # all params: requires_grad=True
+
+# freeze all except specific layers
+freeze_except(model, layer_names=["classifier", "head"])</code></pre>
+
+                    <h3>Device Management</h3>
+                    <pre><code class="language-python">from rictr import auto_device, get_device
+from rictr.utils import move_batch
+
+device = auto_device()    # cuda > mps > cpu
+device = get_device(model)  # get model's device
+
+batch = move_batch(batch, device)  # move all tensors</code></pre>
+
+                    <h3>Model Inspection</h3>
+                    <pre><code class="language-python">from rictr import get_submodule
+from rictr.utils import count_parameters
+
+# count parameters
+total = count_parameters(model)
+trainable = count_parameters(model, trainable_only=True)
+
+# access nested module by path
+encoder = get_submodule(model, "transformer.encoder.layer.0")</code></pre>
+                </section>
+
+                <!-- INTEGRATIONS -->
+                <section id="integrations">
+                    <h2>Integrations</h2>
+
+                    <h3>HuggingFace Transformers</h3>
+                    <pre><code class="language-python">from transformers import AutoModelForSequenceClassification
+from rictr.integrations import HFOutputAdapter, hf_to_dict
+
+# wrap hugging face model for rictr 
+hf_model = AutoModelForSequenceClassification.from_pretrained("bert-base")
+teacher = HFOutputAdapter(hf_model)
+
+# or convert outputs manually
+outputs = hf_model(**inputs)
+outputs_dict = hf_to_dict(outputs)
+# {"logits": tensor, "hidden_states": tuple, ...}</code></pre>
+
+                    <h3>Accelerate (Multi-GPU)</h3>
+                    <pre><code class="language-python">from accelerate import Accelerator
+from rictr.integrations import AcceleratedDistiller
+
+accelerator = Accelerator()
+
+distiller = AcceleratedDistiller(
+    teacher=teacher,
+    student=student,
+    strategy=strategy,
+    optimizer=optimizer,
+    accelerator=accelerator,
+)
+
+dataloader = accelerator.prepare(dataloader)
+for batch in dataloader:
+    loss = distiller.distill_step(batch=batch)</code></pre>
+
+                    <p><code>AcceleratedDistiller</code> wraps accelerate for multi-GPU and mixed precision.</p>
+                </section>
+
+                <!-- MLP EXAMPLE -->
+                <section id="mlp-example">
+                    <h2>MLP Distillation Example</h2>
+                    <p>Simple classification with <code>SoftTarget</code>.</p>
+                    <pre><code class="language-python">import torch
+import torch.nn as nn
+from torch.utils.data import DataLoader, TensorDataset
+from rictr import Distiller, Trainer, SoftTarget
+
+class MLP(nn.Module):
+    def __init__(self, input_dim, hidden_dim, num_classes):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, num_classes),
+        )
+
+    def forward(self, x, **kwargs):
+        return self.net(x)
+
+# models
+teacher = MLP(64, 256, 10)  # large
+student = MLP(64, 64, 10)   # small
+
+# setup
+strategy = SoftTarget(temperature=4.0, alpha=0.5)
+optimizer = torch.optim.Adam(student.parameters(), lr=1e-3)
+distiller = Distiller(
+    teacher=teacher, student=student,
+    strategy=strategy, optimizer=optimizer,
+)
+
+# your collate_fn should return {"x": tensor, "labels": tensor}
+dataset = TensorDataset(torch.randn(1000, 64), torch.randint(0, 10, (1000,)))
+dataloader = DataLoader(dataset, batch_size=32, collate_fn=your_collate_fn)
+
+# train
+trainer = Trainer(distiller)
+losses = trainer.train(dataloader, epochs=5)</code></pre>
+                </section>
+
+                <!-- CNN EXAMPLE -->
+                <section id="cnn-example">
+                    <h2>CNN Distillation Example</h2>
+                    <p>Vision model with feature matching.</p>
+                    <pre><code class="language-python">from rictr import (
+    Distiller, Composite, SoftTarget,
+    HiddenStateDistillation, LayerMap,
+)
+import torch.nn as nn
+
+# create 1x1 conv projector for channel alignment
+projector = nn.Conv2d(32, 128, kernel_size=1)
+
+layer_map = LayerMap(
+    pairs=[("conv2", "conv2")],
+    projectors={"conv2": projector},
+)
+
+# combine logit and feature distillation
+soft = SoftTarget(temperature=4.0)
+hidden = HiddenStateDistillation(
+    teacher=teacher, student=student,
+    layer_map=layer_map,
+)
+
+strategy = Composite([
+    (soft, 0.5),
+    (hidden, 0.5),
+])
+
+# include projector in optimizer
+optimizer = torch.optim.Adam(
+    list(student.parameters()) + list(projector.parameters()),
+    lr=1e-3,
+)
+
+# train...
+
+# cleanup
+hidden.remove_hooks()</code></pre>
+                </section>
+
+                <!-- TRANSFORMER EXAMPLE -->
+                <section id="transformer-example">
+                    <h2>Transformer Distillation Example</h2>
+                    <p>Distilling transformer models with layer mapping.</p>
+                    <pre><code class="language-python">from rictr import (
+    Distiller, Composite, SoftTarget,
+    HiddenStateDistillation, LayerMap, make_projector,
+)
+
+# teacher: 256 dim, student: 64 dim
+proj_encoder = make_projector(64, 256)
+
+layer_map = LayerMap(
+    pairs=[("encoder", "encoder")],
+    projectors={"encoder": proj_encoder},
+)
+
+soft = SoftTarget(temperature=4.0)
+hidden = HiddenStateDistillation(
+    teacher=teacher, student=student,
+    layer_map=layer_map,
+)
+
+strategy = Composite([
+    (soft, 0.7),
+    (hidden, 0.3),
+])
+
+optimizer = torch.optim.AdamW(
+    list(student.parameters()) + list(proj_encoder.parameters()),
+    lr=5e-4,
+    weight_decay=0.01,
+)
+
+# train and cleanup ...
+hidden.remove_hooks()</code></pre>
+                </section>
+
+                <!-- ARCHITECTURE -->
+                <section id="architecture">
+                    <h2>Architecture</h2>
+                    <pre><code class="language-python">rictr/
+├── core/           # Distiller, Trainer, TrainingState, StepOutput
+├── strategies/     # SoftTarget, HiddenStateDistillation, Composite
+├── alignment/      # LayerMap, FeatureExtractor, projectors
+├── losses/         # kl_divergence, mse_loss, attention_loss, etc.
+├── metrics/        # LossTracker, accuracy, perplexity
+├── utils/          # freeze, auto_device, count_parameters
+└── integrations/   # HFOutputAdapter, AcceleratedDistiller</code></pre>
+
+                    <h3>Public API Exports</h3>
+                    <pre><code class="language-python">from rictr import (
+    # core
+    Distiller, Trainer, TrainingState, StepOutput,
+    # strategies
+    DistillationStrategy, SoftTarget, HiddenStateDistillation, Composite,
+    # alignment
+    LayerMap, FeatureExtractor, make_projector, get_submodule,
+    # losses
+    kl_divergence, mse_loss, cosine_loss, attention_loss,
+    # utils
+    freeze, unfreeze, get_device, auto_device,
+)</code></pre>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="../app.js"></script>
+</body>
+</html>
