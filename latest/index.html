@@ -133,7 +133,7 @@
                 <section id="installation">
                     <h2>Installation</h2>
                     <p>Requires <strong>Python 3.13+</strong> and <strong>PyTorch 2.0+</strong>.</p>
-                    <pre><code class="language-python"># using uv (recommended)
+                    <pre><code class="language-python"># using uv (recommended)                         
 uv add rictr
 
 # using pip
@@ -149,7 +149,7 @@ pip install rictr[accelerate]</code></pre>
                 <!-- QUICK START -->
                 <section id="quick-start">
                     <h2>Quick Start</h2>
-                    <p>Distill teacher into a student in a few lines as such:</p>
+                    <p>Distill teacher into a student as such:</p>
                     <pre><code class="language-python">import torch
 from rictr import Distiller, SoftTarget
 
@@ -311,7 +311,7 @@ def collate_fn(batch):
 strategy = SoftTarget(temperature=4.0)</code></pre>
 
                     <h3>With Task Loss Blending</h3>
-                    <pre><code class="language-python"># loss = alpha * task_loss + (1 - alpha) * distill_loss
+                    <pre><code class="language-python"># loss = alpha * task_loss + (1 - alpha) * distill_loss    
 strategy = SoftTarget(
     temperature=4.0,
     alpha=0.5,  # requires "labels" in batch
@@ -347,7 +347,7 @@ strategy = SoftTarget(
                     <h2>Hidden State Distillation</h2>
                     <p>Feature based distillation from <strong>FitNets (Romero et al., 2014)</strong>, matches intermediate layer activations between teacher and student.</p>
 
-                    <pre><code class="language-python">from rictr import HiddenStateDistillation, LayerMap, make_projector
+                    <pre><code class="language-python">from rictr import HiddenStateDistillation, LayerMap, make_projector    
 
 # define layer pairs: (teacher_layer, student_layer)
 layer_map = LayerMap(
@@ -388,7 +388,7 @@ strategy.remove_hooks()</code></pre>
                 <section id="composite">
                     <h2>Composite Strategy</h2>
                     <p>Combines multiple strategies with weighted sum.</p>
-                    <pre><code class="language-python">from rictr import Composite, SoftTarget, HiddenStateDistillation
+                    <pre><code class="language-python">from rictr import Composite, SoftTarget, HiddenStateDistillation   
 
 soft = SoftTarget(temperature=4.0)
 hidden = HiddenStateDistillation(...)
@@ -543,7 +543,7 @@ layer_names = [
                     </table>
 
                     <h3>Usage</h3>
-                    <pre><code class="language-python">from rictr import kl_divergence, mse_loss, cosine_loss, attention_loss
+                    <pre><code class="language-python">from rictr import kl_divergence, mse_loss, cosine_loss, attention_loss   
 from rictr.losses import smooth_l1_loss, compute_attention_map
 
 # kl divergence with temperature
