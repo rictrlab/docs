@@ -292,12 +292,19 @@ strong {
 
 /* Code */
 code {
-    background: var(--code-bg);
-    color: var(--text-color);
+    background: #24292e;
+    color: #ffffff;
     padding: 0.15rem 0.4rem;
     border-radius: 4px;
     font-family: 'Fira Code', monospace;
     font-size: 0.85em;
+}
+
+/* Exclude code blocks from inline code styling */
+pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
 }
 
 pre {
