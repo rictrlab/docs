@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -15,6 +18,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 </head>
+
 <body>
     <div class="app-container">
         <aside class="sidebar">
@@ -97,18 +101,21 @@
                         <div class="version-dropdown">
                             <button class="version-btn">
                                 Latest (1.0.0)
-                                <svg class="dropdown-arrow" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                    <path d="M7 10l5 5 5-5z"/>
+                                <svg class="dropdown-arrow" viewBox="0 0 24 24" width="14" height="14"
+                                    fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z" />
                                 </svg>
                             </button>
                             <ul class="version-menu">
-                                <li><a href="../latest/" class="active">Latest (0.1.0)</a></li>
+                                <li><a href="../latest/" class="active">Latest (1.0.0)</a></li>
                             </ul>
                         </div>
                     </div>
-                    <a href="https://github.com/prashantpandeygit/rictr" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="View on GitHub">
+                    <a href="https://github.com/prashantpandeygit/rictr" target="_blank" rel="noopener noreferrer"
+                        class="github-link" aria-label="View on GitHub">
                         <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                         </svg>
                     </a>
                 </div>
@@ -119,12 +126,12 @@
                     <p class="lead">A Knowledge Distillation library for PyTorch.</p>
                     <p>compress large models into smaller ones by transferring learned representations.</p>
 
-                    <h3>Key Features</h3>
+                    <h3>Features</h3>
                     <ul class="feature-list">
-                        <li><strong>Minimal API</strong> : small surface area, easy to learn</li>
                         <li><strong>Strategy</strong> : change distillation methods without changing much code</li>
                         <li><strong>PyTorch</strong> : works with any <code>nn.Module</code></li>
-                        <li><strong>Composable</strong> : combine multiple strategies with weighted sums into a custom one</li>
+                        <li><strong>Composable</strong> : combine multiple strategies with weighted sums into a custom
+                            one</li>
                         <li><strong>HuggingFace & Accelerate</strong> : third party integrations</li>
                     </ul>
                 </section>
@@ -180,7 +187,8 @@ for batch in dataloader:
                 <!-- DISTILLER -->
                 <section id="distiller">
                     <h2>Distiller</h2>
-                    <p>The <code>Distiller</code> runs the distillation loop: freezes teacher, runs forward passes, computes loss, updates student.</p>
+                    <p>The <code>Distiller</code> runs the distillation loop: freezes teacher, runs forward passes,
+                        computes loss, updates student.</p>
 
                     <pre><code class="language-python">from rictr import Distiller
 
@@ -205,7 +213,8 @@ distiller = Distiller(
 
                     <h3>What Distiller Does NOT Do</h3>
                     <ul class="feature-list">
-                        <li>does not support training loops for now, you can use <code>Trainer</code> or define your own</li>
+                        <li>does not support training loops for now, you can use <code>Trainer</code> or define your own
+                        </li>
                         <li>data or batch loading</li>
                         <li>logging</li>
                         <li>learning rate scheduling</li>
@@ -265,7 +274,8 @@ trainer = Trainer(distiller, callbacks=[
                     <p>Models must meet two requirements to work with rictr.</p>
 
                     <h3>1. Accept **kwargs in forward()</h3>
-                    <p>the distiller passes batch dicts as <code>**kwargs</code>. your model's <code>forward()</code> must accept extra arguments.</p>
+                    <p>the distiller passes batch dicts as <code>**kwargs</code>. your model's <code>forward()</code>
+                        must accept extra arguments.</p>
                     <pre><code class="language-python">class MyModel(nn.Module):
     def forward(self, x, **kwargs):  # accept **kwargs
         return self.layers(x)
@@ -290,7 +300,9 @@ return (logits, hidden_states)
 return ModelOutput(logits=logits, hidden=hidden)</code></pre>
 
                     <h3>Batch Format</h3>
-                    <p>Batches must be dicts with tensor values. The <code>labels</code> key is used by <code>SoftTarget</code> when <code>alpha</code> is set.</p>
+                    <p>Batches must be dicts with tensor values. The <code>labels</code> key is used by
+                        <code>SoftTarget</code> when <code>alpha</code> is set.
+                    </p>
                     <pre><code class="language-python"># example collate function
 def collate_fn(batch):
     xs, ys = zip(*batch)
@@ -303,7 +315,8 @@ def collate_fn(batch):
                 <!-- SOFT TARGET -->
                 <section id="soft-target">
                     <h2>Soft Target Strategy</h2>
-                    <p>Logit-based distillation from <strong>Hinton et al. (2015)</strong>, matches softened probability distributions using temperature scaled KL divergence loss.</p>
+                    <p>Logit-based distillation from <strong>Hinton et al. (2015)</strong>, matches softened probability
+                        distributions using temperature scaled KL divergence loss.</p>
 
                     <h3>Pure Distillation</h3>
                     <pre><code class="language-python">from rictr import SoftTarget
@@ -320,24 +333,52 @@ strategy = SoftTarget(
                     <h3>Parameters</h3>
                     <table>
                         <thead>
-                            <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td><code>temperature</code></td><td>float</td><td>softmax temperature (must be > 0), higher = softer. typical: 2-20</td></tr>
-                            <tr><td><code>alpha</code></td><td>float | None</td><td>task loss weight in [0, 1]. None = pure distillation</td></tr>
-                            <tr><td><code>task_loss</code></td><td>callable</td><td>loss function for labels. default: <code>F.cross_entropy</code></td></tr>
+                            <tr>
+                                <td><code>temperature</code></td>
+                                <td>float</td>
+                                <td>softmax temperature (must be > 0), higher = softer. typical: 2-20</td>
+                            </tr>
+                            <tr>
+                                <td><code>alpha</code></td>
+                                <td>float | None</td>
+                                <td>task loss weight in [0, 1]. None = pure distillation</td>
+                            </tr>
+                            <tr>
+                                <td><code>task_loss</code></td>
+                                <td>callable</td>
+                                <td>loss function for labels. default: <code>F.cross_entropy</code></td>
+                            </tr>
                         </tbody>
                     </table>
 
                     <h3>Temperature Guide</h3>
                     <table>
                         <thead>
-                            <tr><th>Temperature</th><th>Effect</th></tr>
+                            <tr>
+                                <th>Temperature</th>
+                                <th>Effect</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>T = 1</td><td>original (hard) distribution</td></tr>
-                            <tr><td>T = 2-5</td><td>moderate softening (good default)</td></tr>
-                            <tr><td>T = 10-20</td><td>very soft, reveals class relationships</td></tr>
+                            <tr>
+                                <td>T = 1</td>
+                                <td>original (hard) distribution</td>
+                            </tr>
+                            <tr>
+                                <td>T = 2-5</td>
+                                <td>moderate softening (good default)</td>
+                            </tr>
+                            <tr>
+                                <td>T = 10-20</td>
+                                <td>very soft, reveals class relationships</td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
@@ -345,7 +386,8 @@ strategy = SoftTarget(
                 <!-- HIDDEN STATE -->
                 <section id="hidden-state">
                     <h2>Hidden State Distillation</h2>
-                    <p>Feature based distillation from <strong>FitNets (Romero et al., 2014)</strong>, matches intermediate layer activations between teacher and student.</p>
+                    <p>Feature based distillation from <strong>FitNets (Romero et al., 2014)</strong>, matches
+                        intermediate layer activations between teacher and student.</p>
 
                     <pre><code class="language-python">from rictr import HiddenStateDistillation, LayerMap, make_projector    
 
@@ -373,13 +415,33 @@ strategy.remove_hooks()</code></pre>
                     <h3>Parameters</h3>
                     <table>
                         <thead>
-                            <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td><code>teacher</code></td><td>nn.Module</td><td>teacher model</td></tr>
-                            <tr><td><code>student</code></td><td>nn.Module</td><td>student model</td></tr>
-                            <tr><td><code>layer_map</code></td><td>LayerMap</td><td>defines layer pairs and projectors</td></tr>
-                            <tr><td><code>loss_fn</code></td><td>callable</td><td>loss for comparing features. default: <code>F.mse_loss</code></td></tr>
+                            <tr>
+                                <td><code>teacher</code></td>
+                                <td>nn.Module</td>
+                                <td>teacher model</td>
+                            </tr>
+                            <tr>
+                                <td><code>student</code></td>
+                                <td>nn.Module</td>
+                                <td>student model</td>
+                            </tr>
+                            <tr>
+                                <td><code>layer_map</code></td>
+                                <td>LayerMap</td>
+                                <td>defines layer pairs and projectors</td>
+                            </tr>
+                            <tr>
+                                <td><code>loss_fn</code></td>
+                                <td>callable</td>
+                                <td>loss for comparing features. default: <code>F.mse_loss</code></td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
@@ -531,14 +593,32 @@ layer_names = [
                     <p>Reusable loss primitives in <code>rictr.losses</code>.</p>
                     <table>
                         <thead>
-                            <tr><th>Function</th><th>Description</th></tr>
+                            <tr>
+                                <th>Function</th>
+                                <th>Description</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td><code>kl_divergence</code></td><td>temperature scaled KL divergence</td></tr>
-                            <tr><td><code>mse_loss</code></td><td>mean squared error with optional L2 normalization</td></tr>
-                            <tr><td><code>cosine_loss</code></td><td>1 - cosine similarity</td></tr>
-                            <tr><td><code>smooth_l1_loss</code></td><td>huber loss (less sensitive to outliers)</td></tr>
-                            <tr><td><code>attention_loss</code></td><td>attention transfer loss</td></tr>
+                            <tr>
+                                <td><code>kl_divergence</code></td>
+                                <td>temperature scaled KL divergence</td>
+                            </tr>
+                            <tr>
+                                <td><code>mse_loss</code></td>
+                                <td>mean squared error with optional L2 normalization</td>
+                            </tr>
+                            <tr>
+                                <td><code>cosine_loss</code></td>
+                                <td>1 - cosine similarity</td>
+                            </tr>
+                            <tr>
+                                <td><code>smooth_l1_loss</code></td>
+                                <td>huber loss (less sensitive to outliers)</td>
+                            </tr>
+                            <tr>
+                                <td><code>attention_loss</code></td>
+                                <td>attention transfer loss</td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -820,4 +900,5 @@ hidden.remove_hooks()</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     <script src="../app.js"></script>
 </body>
+
 </html>
